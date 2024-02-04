@@ -1,21 +1,26 @@
-import {View, Text, TextInput, Button} from 'react-native';
-import React, {memo, useState, useEffect, useMemo} from 'react';
+import {ScrollView, View} from 'react-native';
+import React, {useEffect} from 'react';
 import MyText from '../../components/MyText';
 import styles from './styles';
 import MyHeader from '../../components/MyHeader';
 
 const DetailScreen = props => {
-  console.log('detail render', props);
+  useEffect(() => {
+    console.log('detail mount');
+  }, []);
+  console.log('detail render');
   const {id, userId, title, body} = props.route.params;
   return (
-    <View style={styles.main}>
-      <MyHeader>{title}</MyHeader>
-      <View style={styles.ids}>
-        <MyText>id: {id}</MyText>
-        <MyText>userId: {userId}</MyText>
+    <ScrollView>
+      <View style={styles.main}>
+        <MyHeader>{title}</MyHeader>
+        <View style={styles.ids}>
+          <MyText>id: {id}</MyText>
+          <MyText>userId: {userId}</MyText>
+        </View>
+        <MyText>{body}</MyText>
       </View>
-      <MyText>{body}</MyText>
-    </View>
+    </ScrollView>
   );
 };
 

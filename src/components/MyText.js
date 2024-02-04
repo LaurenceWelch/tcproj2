@@ -1,9 +1,20 @@
-import {View, Text, StyleSheet} from 'react-native';
+import {StyleSheet, Text} from 'react-native';
 import React, {memo} from 'react';
 
-const MyText = ({children}) => {
-  console.log('render mytext');
-  return <Text style={styles.text}>{children}</Text>;
+const MyText = props => {
+  //console.log('render mytext');
+  return (
+    <Text
+      maxFontSizeMultiplier={2}
+      numberOfLines={props.numberOfLines}
+      style={styles.text}>
+      {props.children}
+    </Text>
+  );
+};
+
+MyText.defaultProps = {
+  numberOfLines: 0,
 };
 
 export default memo(MyText);

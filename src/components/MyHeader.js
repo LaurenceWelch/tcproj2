@@ -2,7 +2,7 @@ import {Text, StyleSheet} from 'react-native';
 import React, {memo} from 'react';
 
 const MyHeader = ({children}) => {
-  console.log('render myheader');
+  //console.log('render myheader');
   return <Text style={styles.text}>{children}</Text>;
 };
 
