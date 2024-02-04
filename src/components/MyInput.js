@@ -24,5 +24,5 @@ MyInput.defaultProps = {
 export default memo(MyInput);
 
 const styles = StyleSheet.create({
-  input: {fontSize: 20, margin: 10},
+  input: {fontSize: 18, margin: 10},
 });

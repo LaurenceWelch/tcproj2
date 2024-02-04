@@ -1,12 +1,13 @@
-import {View, Text} from 'react-native';
-import React from 'react';
+import {Text, StyleSheet} from 'react-native';
+import React, {memo} from 'react';
 
-const MyHeader = () => {
-  return (
-    <View>
-      <Text>MyHeader</Text>
-    </View>
-  );
+const MyHeader = ({children}) => {
+  console.log('render myheader');
+  return <Text style={styles.text}>{children}</Text>;
 };
 
-export default MyHeader;
+export default memo(MyHeader);
+
+const styles = StyleSheet.create({
+  text: {fontSize: 20, padding: 10, margin: 10, backgroundColor: '#ddd'},
+});

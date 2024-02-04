@@ -1,12 +1,13 @@
-import {View, Text} from 'react-native';
-import React from 'react';
+import {View, Text, StyleSheet} from 'react-native';
+import React, {memo} from 'react';
 
-const MyText = () => {
-  return (
-    <View>
-      <Text>MyText</Text>
-    </View>
-  );
+const MyText = ({children}) => {
+  console.log('render mytext');
+  return <Text style={styles.text}>{children}</Text>;
 };
 
-export default MyText;
+export default memo(MyText);
+
+const styles = StyleSheet.create({
+  text: {fontSize: 18, margin: 4},
+});

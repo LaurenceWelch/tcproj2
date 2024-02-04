@@ -1,17 +1,32 @@
-import React from 'react';
-import {View, FlatList, Text} from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {View, FlatList, Text, TouchableOpacity, Button} from 'react-native';
+import DataApi from '../../helpers/DataApi';
+import MyText from '../../components/MyText';
 
-const IdItem = ({val}) => {
+const IdItem = ({val, navigation}) => {
+  console.log('item render');
   return (
-    <View>
-      <Text>{val}</Text>
-    </View>
+    <TouchableOpacity onPress={() => navigation.navigate('detail', val)}>
+      <View>
+        <MyText>title: {val.title}</MyText>
+        <MyText>userId: {val.userId}</MyText>
+      </View>
+    </TouchableOpacity>
   );
 };
 
-const ListScreen = () => {
+const ListScreen = props => {
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    fetch('https://jsonplaceholder.typicode.com/posts')
+      .then(response => response.json())
+      .then(json => setData(json));
+  }, []);
+  console.log('list render');
+  console.log(JSON.stringify(props));
+
   const map = new Map();
-  const Ids = data.filter(({userId}) => {
+  const Ids = data2.filter(({userId}) => {
     if (map.has(userId)) {
       return false;
     } else {
@@ -19,12 +34,14 @@ const ListScreen = () => {
       return true;
     }
   });
+  console.log('len', data.length);
+
   return (
     <View>
       <FlatList
-        data={Ids}
+        data={data}
         renderItem={({item}) => {
-          return <IdItem val={item.userId} />;
+          return <IdItem val={item} navigation={props.navigation} />;
         }}
         keyExtractor={(_, index) => index.toString()}
       />
@@ -34,7 +51,7 @@ const ListScreen = () => {
 
 export default ListScreen;
 
-const data = [
+const data2 = [
   {
     userId: 1,
     id: 1,

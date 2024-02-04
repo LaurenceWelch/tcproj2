@@ -15,6 +15,6 @@ const MyButton = props => {
 export default MyButton;
 
 const styles = StyleSheet.create({
-  text: {fontSize: 30, color: 'dodgerblue'},
-  disabled: {fontSize: 30, color: 'lightgray'},
+  text: {fontSize: 20, color: 'dodgerblue', margin: 10},
+  disabled: {fontSize: 20, color: 'lightgray', margin: 10},
 });
