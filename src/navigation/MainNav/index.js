@@ -10,7 +10,7 @@ import CreateUserScreen from '../../screens/CreateUserScreen';
 const Stack = createNativeStackNavigator();
 
 const Navigation = () => {
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState(null);
 
   const login = userObj => setUser(userObj);
   const logout = () => setUser(null);
