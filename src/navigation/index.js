@@ -4,41 +4,33 @@ import HomeScreen from '../screens/HomeScreen';
 import DetailScreen from '../screens/DetailScreen';
 import TabScreen from '../screens/TabScreen';
 import LoginScreen from '../screens/LoginScreen';
-import DrawerScreen from '../screens/DrawerScreen';
 import {UserContextProvider} from '../Context/UserContext';
+import CreateUserScreen from '../screens/CreateUserScreen';
 
 const Stack = createNativeStackNavigator();
 
 const Navigation = () => {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState({});
 
   const login = userObj => setUser(userObj);
   const logout = () => setUser(null);
 
   const renderMainStack = () => {
-    return (
-      <Stack.Group>
-        <Stack.Screen name={'Home'} component={HomeScreen} />
-        <Stack.Screen name={'Details'} component={DetailScreen} />
-        <Stack.Screen name={'Tabs'} component={TabScreen} />
-        <Stack.Screen name={'Drawer'} component={DrawerScreen} />
-      </Stack.Group>
-    );
+    return <TabScreen />;
   };
 
   const renderAuthStack = () => {
     return (
-      <Stack.Group>
+      <Stack.Navigator initialRouteName={'Login'}>
         <Stack.Screen name={'Login'} component={LoginScreen} />
-      </Stack.Group>
+        <Stack.Screen name={'Register'} component={CreateUserScreen} />
+      </Stack.Navigator>
     );
   };
 
   return (
     <UserContextProvider value={{user, login, logout}}>
-      <Stack.Navigator>
-        {user ? renderMainStack() : renderAuthStack()}
-      </Stack.Navigator>
+      {user ? renderMainStack() : renderAuthStack()}
     </UserContextProvider>
   );
 };

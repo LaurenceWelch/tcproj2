@@ -3,6 +3,7 @@ import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import MyHeader from '../../components/MyHeader';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import ListScreen from '../ListScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -20,7 +21,7 @@ const TabScreen = () => {
         tabBarActiveTintColor: 'orange',
         tabBarInactiveTintColor: 'gray',
       })}>
-      <Tab.Screen name={'test1'} component={MyHeader} />
+      <Tab.Screen name={'test1'} component={ListScreen} />
       <Tab.Screen name={'test2'} component={MyHeader} />
     </Tab.Navigator>
   );
