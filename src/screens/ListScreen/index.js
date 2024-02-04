@@ -1,16 +1,5 @@
-import {View, Text, FlatList} from 'react-native';
 import React from 'react';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-
-const Stack = createNativeStackNavigator();
-
-const ListItem = ({userId}) => {
-  return (
-    <View>
-      <Text>{userId}</Text>
-    </View>
-  );
-};
+import {View, FlatList, Text} from 'react-native';
 
 const IdItem = ({val}) => {
   return (

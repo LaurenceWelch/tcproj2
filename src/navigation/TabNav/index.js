@@ -3,7 +3,7 @@ import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import MyHeader from '../../components/MyHeader';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import ListScreen from '../ListScreen';
+import ListNav from '../ListNav';
 
 const Tab = createBottomTabNavigator();
 
@@ -12,17 +12,21 @@ const TabScreen = () => {
     <Tab.Navigator
       screenOptions={({route}) => ({
         tabBarIcon: ({focused, color, size}) => {
-          let iconName = 'list-outline';
-          let iconName2 = 'information-circle-outline';
+          let iconName = focused
+            ? route.name === 'list'
+              ? 'list'
+              : 'settings'
+            : route.name === 'list'
+            ? 'list-outline'
+            : 'settings-outline';
 
-          // You can return any component that you like here!
-          return <Ionicons name={'list-outline'} size={size} color={color} />;
+          return <Ionicons name={iconName} size={size} color={color} />;
         },
         tabBarActiveTintColor: 'orange',
         tabBarInactiveTintColor: 'gray',
       })}>
-      <Tab.Screen name={'test1'} component={ListScreen} />
-      <Tab.Screen name={'test2'} component={MyHeader} />
+      <Tab.Screen name={'list'} component={ListNav} />
+      <Tab.Screen name={'settings'} component={MyHeader} />
     </Tab.Navigator>
   );
 };

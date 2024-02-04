@@ -1,11 +1,11 @@
 import React, {useState} from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import HomeScreen from '../screens/HomeScreen';
-import DetailScreen from '../screens/DetailScreen';
-import TabScreen from '../screens/TabScreen';
-import LoginScreen from '../screens/LoginScreen';
-import {UserContextProvider} from '../Context/UserContext';
-import CreateUserScreen from '../screens/CreateUserScreen';
+import HomeScreen from '../../screens/HomeScreen';
+import DetailScreen from '../../screens/DetailScreen';
+import TabScreen from '../TabNav';
+import LoginScreen from '../../screens/LoginScreen';
+import {UserContextProvider} from '../../Context/UserContext';
+import CreateUserScreen from '../../screens/CreateUserScreen';
 
 const Stack = createNativeStackNavigator();
 
