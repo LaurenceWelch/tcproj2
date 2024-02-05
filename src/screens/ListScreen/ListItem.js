@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {memo} from 'react';
 import MyText from '../../components/MyText';
 import {View, TouchableOpacity, StyleSheet} from 'react-native';
 
@@ -8,10 +8,7 @@ const ListItem = ({val, navigation}) => {
     <TouchableOpacity
       style={styles.row}
       onPress={() => navigation.navigate('detail', val)}>
-      <View
-        onLayout={data => {
-          console.log(data);
-        }}>
+      <View>
         <MyText numberOfLines={1}>title: {val.title}</MyText>
         <MyText>id: {val.id}</MyText>
       </View>
@@ -19,7 +16,7 @@ const ListItem = ({val, navigation}) => {
   );
 };
 
-export default ListItem;
+export default memo(ListItem);
 
 const styles = StyleSheet.create({
   row: {

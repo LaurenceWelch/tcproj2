@@ -5,7 +5,7 @@ import styles from './styles';
 import Confirm from '../../components/Confirm';
 import {useUserContext} from '../../Context/UserContext';
 
-const SettingsScreen = () => {
+const SettingsScreen = props => {
   const [showModal, setShowModal] = useState('false');
   const userContext = useUserContext();
 
@@ -14,7 +14,10 @@ const SettingsScreen = () => {
       <Confirm
         title={'Do you really want to Logout?'}
         visible={showModal}
-        submit={() => userContext.logout()}
+        submit={() => {
+          props.navigation.navigate('dash');
+          userContext.logout();
+        }}
         cancel={() => setShowModal(false)}
       />
       <MyButton title={'Logout'} submit={() => setShowModal(true)} />

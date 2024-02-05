@@ -9,5 +9,11 @@ const MyHeader = ({children}) => {
 export default memo(MyHeader);
 
 const styles = StyleSheet.create({
-  text: {fontSize: 20, padding: 10, margin: 10, backgroundColor: '#ddd'},
+  text: {
+    alignSelf: 'center',
+    fontSize: 20,
+    padding: 10,
+    margin: 10,
+    backgroundColor: '#ddd',
+  },
 });
